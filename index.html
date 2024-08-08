@@ -980,30 +980,29 @@
       </form>
 
       <script type="text/javascript">
-        // Code JavaScript pour envoyer le formulaire
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-
-  // Afficher le message de chargement
-  document.querySelector('.loading').style.display = 'block';
-
-  // Envoi du formulaire avec EmailJS
-  emailjs.sendForm('service_abdoulwakilou', 'template_57wi1os', this)
-    .then(function() {
-      // Cacher le message de chargement
-      document.querySelector('.loading').style.display = 'none';
-
-      // Afficher le message de succès
-      document.querySelector('.sent-message').style.display = 'block';
-    }, function(error) {
-      // Cacher le message de chargement
-      document.querySelector('.loading').style.display = 'none';
-
-      // Afficher le message d'erreur
-      document.querySelector('.error-message').textContent = error.text;
-      document.querySelector('.error-message').style.display = 'block';
-    });
-});
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+        
+          // Afficher le message de chargement
+          document.querySelector('.loading').style.display = 'block';
+        
+          // Envoi du formulaire avec EmailJS
+          emailjs.sendForm('service_abdoulwakilou', 'template_57wi1os', this)
+            .then(function() {
+              // Cacher le message de chargement
+              document.querySelector('.loading').style.display = 'none';
+        
+              // Afficher le message de succès
+              document.querySelector('.sent-message').style.display = 'block';
+            }, function(error) {
+              // Cacher le message de chargement
+              document.querySelector('.loading').style.display = 'none';
+        
+              // Afficher le message d'erreur
+              document.querySelector('.error-message').textContent = error.text;
+              document.querySelector('.error-message').style.display = 'block';
+            });
+        });
         </script>
 
     </div>
