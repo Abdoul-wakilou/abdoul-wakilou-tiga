@@ -972,12 +972,38 @@
           <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
         </div>
         <div class="my-3">
-          <div class="loading">En cours d'envoi...</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Votre message à été envoyé, nous vous repondrons au plus vite. Merci!</div>
+          <div class="loading" style="display:none;">En cours d'envoi...</div>
+          <div class="error-message" style="display:none;"></div>
+          <div class="sent-message" style="display:none;">Votre message a été envoyé, nous vous répondrons au plus vite. Merci!</div>
         </div>
         <div class="text-center"><button type="submit">Envoyer le Message</button></div>
       </form>
+
+      <script type="text/javascript">
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+        
+          // Afficher le message de chargement
+          document.querySelector('.loading').style.display = 'block';
+        
+          // Envoi du formulaire avec EmailJS
+          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function() {
+              // Cacher le message de chargement
+              document.querySelector('.loading').style.display = 'none';
+        
+              // Afficher le message de succès
+              document.querySelector('.sent-message').style.display = 'block';
+            }, function(error) {
+              // Cacher le message de chargement
+              document.querySelector('.loading').style.display = 'none';
+        
+              // Afficher le message d'erreur
+              document.querySelector('.error-message').textContent = error.text;
+              document.querySelector('.error-message').style.display = 'block';
+            });
+        });
+        </script>
 
     </div>
   </section><!-- End Contact Section -->
@@ -1023,35 +1049,9 @@
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script type="text/javascript">
   (function(){
-    emailjs.init("jCacRNy-BVPUJv1al"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
+    emailjs.init("arqN9Hi-KPo2LA47DKV7G"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
   })();
 </script>
-
-
-<script type="text/javascript">
-  document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-  
-    // Afficher le message de chargement
-    document.querySelector('.loading').style.display = 'block';
-  
-    emailjs.sendForm('service_abdoulwakilou', 'template_57wi1os', this)
-      .then(function() {
-        // Cacher le message de chargement
-        document.querySelector('.loading').style.display = 'none';
-  
-        // Afficher le message de succès
-        document.querySelector('.sent-message').style.display = 'block';
-      }, function(error) {
-        // Cacher le message de chargement
-        document.querySelector('.loading').style.display = 'none';
-  
-        // Afficher le message d'erreur
-        document.querySelector('.error-message').textContent = error.text;
-        document.querySelector('.error-message').style.display = 'block';
-      });
-  });
-  </script>
 
 </body>
 
