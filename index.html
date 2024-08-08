@@ -42,7 +42,14 @@
 <!-- Swiper CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.4/swiper-bundle.min.css" rel="stylesheet">
 
-
+<!-- Pour envoi de email -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("arqN9Hi-KPo2LA47DKV7G"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
+    })();
+  </script>
+    
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -978,32 +985,32 @@
         </div>
         <div class="text-center"><button type="submit">Envoyer le Message</button></div>
       </form>
-
+      
       <script type="text/javascript">
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-          event.preventDefault();
-        
-          // Afficher le message de chargement
-          document.querySelector('.loading').style.display = 'block';
-        
-          // Envoi du formulaire avec EmailJS
-          emailjs.sendForm('service_abdoulwakilou', 'template_57wi1os', this)
-            .then(function() {
-              // Cacher le message de chargement
-              document.querySelector('.loading').style.display = 'none';
-        
-              // Afficher le message de succès
-              document.querySelector('.sent-message').style.display = 'block';
-            }, function(error) {
-              // Cacher le message de chargement
-              document.querySelector('.loading').style.display = 'none';
-        
-              // Afficher le message d'erreur
-              document.querySelector('.error-message').textContent = error.text;
-              document.querySelector('.error-message').style.display = 'block';
-            });
-        });
-        </script>
+      document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+      
+        // Afficher le message de chargement
+        document.querySelector('.loading').style.display = 'block';
+      
+        // Envoi du formulaire avec EmailJS
+        emailjs.sendForm('service_abdoulwakilou', 'template_57wi1os', this)
+          .then(function() {
+            // Cacher le message de chargement
+            document.querySelector('.loading').style.display = 'none';
+      
+            // Afficher le message de succès
+            document.querySelector('.sent-message').style.display = 'block';
+          }, function(error) {
+            // Cacher le message de chargement
+            document.querySelector('.loading').style.display = 'none';
+      
+            // Afficher le message d'erreur
+            document.querySelector('.error-message').textContent = error.text;
+            document.querySelector('.error-message').style.display = 'block';
+          });
+      });
+      </script>
 
     </div>
   </section><!-- End Contact Section -->
@@ -1045,13 +1052,6 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
-  <!-- Pour envoi de email -->
-  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script type="text/javascript">
-  (function(){
-    emailjs.init("arqN9Hi-KPo2LA47DKV7G"); // Remplacez YOUR_USER_ID par votre ID utilisateur EmailJS
-  })();
-</script>
 
 </body>
 
