@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de Contact</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="h1-contact">Formulaire de Contact</h1>
+        <form id="contact-form">
+            <div class="form-content">
+                <label for="name" class="label-contact">Nom et Prenom :</label>
+                <input class="input-contact" type="text" id="name" name="name" placeholder="Nom et Prenom" required>
+
+                <label for="email" class="label-contact">Adresse mail :</label>
+                <input class="input-contact" type="email" id="email" name="email" placeholder="exemple@gmail.com" required>
+
+                <label for="phone" class="label-contact">N° Téléphone :</label>
+                <input class="input-contact" type="tel" id="phone" name="phone" placeholder="+12345678" required>
+
+                <label for="subject" class="label-contact">Sujet:</label>
+                <select class="select-contact" id="subject" name="subject" required>
+                    <option value="" selected disabled>Selectionner l'objet de la demande</option>
+                    <option value="devis">Devis</option>
+                    <option value="questions">Questions</option>
+                    <option value="Autre">Autre</option>
+                </select>
+
+                <label for="message" class="label-contact">Message :</label>
+                <textarea class="message-contact" id="message" name="message" placeholder="Merci de renseigner vos questions ou commentaires" rows="10" required></textarea>
+
+                <label for="checkbox" class="label-contact">
+                    <input type="checkbox" id="checkbox" name="checkbox"> En cochant cette case, j'accepte de recevoir des informations sur les différentes offres disponibles.
+                </label>
+
+                <button class="button-contact" type="submit">Envoyer</button>
+            </div>
+        </form>
+
+        <p id="response-message"></p>
+    </div>
+
+    <script>
+        (function () {
+            emailjs.init('wJFtCVadX1A_B463l'); // Remplace 'TON_USER_ID' par ton vrai User ID de EmailJS
+        })();
+
+        const form = document.getElementById('contact-form');
+        const responseMessage = document.getElementById('response-message');
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const serviceId = 'service_abdoulwakilou'; // Remplace par ton vrai Service ID
+            const templateId = 'template_57wi1os'; // Remplace par ton vrai Template ID
+
+            emailjs.sendForm(serviceId, templateId, this)
+                .then(function () {
+                    responseMessage.textContent = '😀 Merci pour votre message, il sera traité au plus vite 😀';
+                    responseMessage.className = 'success';
+                    form.reset();
+                }, function (error) {
+                    responseMessage.textContent = '😞 Il y a une erreur. Merci de réessayer.';
+                    responseMessage.className = 'error';
+                });
+        });
+    </script>
+</body>
+</html>
+
+
+<style>
+/* Réinitialisation et styles de base */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    margin-bottom: 30px;
+    color: #333;
+    text-align: center;
+  }
+  
+  /* Styles du formulaire */
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+  }
+  
+  .form-control, .form-select, .message-contact {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus, .form-select:focus, .message-contact:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  button {
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Messages de réponse */
+  #response-message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  #response-message.success {
+    color: #28a745;
+  }
+  
+  #response-message.error {
+    color: #dc3545;
+  }
+  
+  /* Styles pour les erreurs de validation */
+  #error-message {
+    color: #dc3545;
+    font-size: 0.875rem;
+  }
+  
+</style>
