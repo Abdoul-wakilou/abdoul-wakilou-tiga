@@ -1,0 +1,13 @@
+[{
+    "relation": [
+        "delegate_permission/common.handle_all_urls",
+        "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+        "namespace": "android_app",
+        "package_name": "fr.flem.app",
+        "sha256_cert_fingerprints": [
+            "69:10:F2:B8:F9:52:00:14:CF:59:95:B8:97:98:36:00:08:32:E7:CA:A1:94:F6:01:8B:C8:C7:46:B1:43:83:DC"
+        ]
+    }
+}]
